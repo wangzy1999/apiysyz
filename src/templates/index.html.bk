@@ -1,0 +1,215 @@
+$def with (urls, revs)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Api Client</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <script src="/static/jquery.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">WebSOC API</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">接口列表<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">登陆</a></li>
+              <li class="divider"></li>
+              <li><a href="#">创建周期任务</a></li>
+              <li><a href="#">创建临时任务</a></li>
+              <li><a href="#">删除任务</a></li>
+              <li class="divider"></li>
+              <li><a href="#">查询任务进度</a></li>
+              <li><a href="#">忽略事件</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <div class="well">  </div>
+
+  <div class="container" >
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">登陆接口</h3>
+      </div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">URL</span>
+          <input type="text" class="form-control" disabled="disabled" value="$urls.LOGIN" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <form class="form-inline" method="GET" action="/login" >
+          <div class="form-group">
+            <label class="sr-only" for="user">Username</label>
+            <input type="username" class="form-control" id="user" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="pwd">Password</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Sign in</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">创建周期任务接口</h3>
+      </div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">URL</span>
+          <input type="text" class="form-control" disabled="disabled" value="$urls.C_ADD" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <form method="GET" action="/send/cycle">
+          <div class="form-group">
+            <label class="control-label" for="inputSuccess1">添加任务参数</label>
+            <textarea class="form-control" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="name">任务组名称</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Group Name">
+          </div>
+          <button type="submit" class="btn btn-default">Sign in</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">创建临时任务接口</h3>
+      </div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">URL</span>
+          <input type="text" class="form-control" disabled="disabled" value="$urls.T_ADD" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <form method="GET" action="/send/temp" >
+          <div class="form-group">
+            <label class="control-label" for="inputSuccess1">添加任务参数</label>
+            <textarea class="form-control" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="name">任务组名称</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Group Name">
+          </div>
+          <button type="submit" class="btn btn-default">Sign in</button>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">删除任务接口</h3>
+      </div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">URL</span>
+          <input type="text" class="form-control" disabled="disabled" value="$urls.DELETE_VGROUP" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <form method="GET" action="/del" >
+          <div class="form-group">
+            <label class="control-label" for="vgid">任务组ID</label>
+            <input type="text" class="form-control" id="vgid" name="vgid" placeholder="Group Id">
+          </div>
+          <button type="submit" class="btn btn-default">Sign in</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">查询任务进度接口</h3>
+      </div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">URL</span>
+          <input type="text" class="form-control" disabled="disabled" value="$urls.PROG" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">忽略事件接口</h3>
+      </div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">URL</span>
+          <input type="text" class="form-control" disabled="disabled" value="$urls.IGNORE_EVENT" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <form method="GET" action="/event/ignore" >
+          <div class="form-group">
+            <label class="control-label" for="inputSuccess1">Site ID</label>
+            <input type="text" class="form-control" id="site_id" name="site_id" placeholder="Enter Site ID">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="inputSuccess1">URL</label>
+            <input type="text" class="form-control" id="url" name="url" placeholder="Enter URL">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="inputSuccess1">MD5</label>
+            <input type="text" class="form-control" id="md5" name="md5" placeholder="Enter MD5">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="inputSuccess1">TYPE</label>
+            <input type="text" class="form-control" id="type" name="type" placeholder="Enter TYPE">
+          </div>
+
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">已接收到的数据</h3>
+      </div>
+      <div class="panel-body">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+        $for c in revs
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading$c">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse$c" aria-expanded="false" aria-controls="collapse$c">
+                站点ID：$c &nbsp; $revs[c]['total']
+                </a>
+              </h4>
+            </div>
+            <div id="collapse$c" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading$c">
+              <div class="panel-body">
+                <textarea class="form-control" rows="10">$revs[c]['text']</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
